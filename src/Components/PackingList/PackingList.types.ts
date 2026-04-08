@@ -1,9 +1,9 @@
 export type PackingListProps = {
-    packingList: PackingList[]
+    packingList: PackingListItem[]
 }
 
 
-export type PackingList = {
+export type PackingListItem = {
     id : number,
     description: string,
     quantity: number,
@@ -11,5 +11,5 @@ export type PackingList = {
 }
 
 export type PackingListItemProps = {
-    packingListItem: PackingList
+    packingListItem: PackingListItem
 }
