@@ -7,7 +7,11 @@ import { PackingListItemProps } from "./PackingList.types";
  * @param {PackingListItemProps} props - Contains packingListItem object
  * @returns Rendered list item with delete button
  */
-export const PackingListItem = ({ packingListItem }: PackingListItemProps) => {
+export const PackingListItem = ({
+  packingListItem,
+  deleteItem,
+  packingList,
+}: PackingListItemProps) => {
   return (
     <li>
       {/* Apply strikethrough style if item is packed */}
@@ -18,7 +22,7 @@ export const PackingListItem = ({ packingListItem }: PackingListItemProps) => {
         {packingListItem.description}
       </span>
       {/* Delete button to remove item from list */}
-      <button>❌</button>
+      <button onClick={() => deleteItem(packingListItem)}>❌</button>
     </li>
   );
 };

@@ -7,7 +7,7 @@ import { FormProps } from "./Form.types";
  * Currently displays a prompt for users to add items
  * TODO: Add input fields and submit handler
  */
-export const Form = ({ packingList, setPackingList }: FormProps) => {
+export const Form = ({ packingList, addItem }: FormProps) => {
   const [description, setDescription] = useState<string>("");
   const [quantity, setQuantity] = useState<number | string>("");
 
@@ -26,7 +26,7 @@ export const Form = ({ packingList, setPackingList }: FormProps) => {
       quantity: Number(quantity),
       packed: false,
     };
-    setPackingList([...packingList, newItem]);
+    addItem(newItem);
     setDescription("");
     setQuantity("");
     console.log(newItem);

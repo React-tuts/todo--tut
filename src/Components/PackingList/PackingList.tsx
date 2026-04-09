@@ -7,13 +7,18 @@ import { PackingListItem } from "./PackingListItem";
  * @param {PackingListProps} props - Contains packingList array of items
  * @returns Rendered list of packing items
  */
-export const PackingList = ({ packingList }: PackingListProps) => {
+export const PackingList = ({ packingList, deleteItem }: PackingListProps) => {
   return (
     <div className="list">
       <ul>
         {/* Map through all packing items and render each one */}
         {packingList.map((pl) => (
-          <PackingListItem packingListItem={pl} key={pl.id} />
+          <PackingListItem
+            packingListItem={pl}
+            key={pl.id}
+            deleteItem={deleteItem}
+            packingList={packingList}
+          />
         ))}
       </ul>
     </div>

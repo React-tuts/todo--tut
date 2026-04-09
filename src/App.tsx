@@ -14,14 +14,21 @@ import { PackingListItem } from "./Components/PackingList/PackingList.types";
 function App() {
   const [packingList, setPackingList] =
     useState<PackingListItem[]>(PackingListData);
+
+  const deleteItem = (item: PackingListItem) => {
+    setPackingList((items) => packingList.filter((p) => p.id !== item.id));
+  };
+  const addItem = (item: PackingListItem) => {
+    setPackingList((items) => [...packingList, item]);
+  };
   return (
     <div className="app">
       {/* Main application title/logo */}
       <Logo />
       {/* Form to add new items to the packing list */}
-      <Form packingList={packingList} setPackingList={setPackingList} />
+      <Form packingList={packingList} addItem={addItem} />
       {/* List of packing items with their state */}
-      <PackingList packingList={packingList} />
+      <PackingList packingList={packingList} deleteItem={deleteItem} />
       {/* Statistics showing total items and packed count */}
       <Stats />
     </div>
