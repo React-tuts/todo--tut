@@ -21,6 +21,14 @@ function App() {
   const addItem = (item: PackingListItem) => {
     setPackingList((items) => [...packingList, item]);
   };
+
+  const handleCheckbox = (item: PackingListItem) => {
+    setPackingList(
+      packingList.map((p) =>
+        p.id === item.id ? { ...p, packed: !p.packed } : p,
+      ),
+    );
+  };
   return (
     <div className="app">
       {/* Main application title/logo */}
@@ -28,9 +36,13 @@ function App() {
       {/* Form to add new items to the packing list */}
       <Form packingList={packingList} addItem={addItem} />
       {/* List of packing items with their state */}
-      <PackingList packingList={packingList} deleteItem={deleteItem} />
+      <PackingList
+        packingList={packingList}
+        deleteItem={deleteItem}
+        handleCheckbox={handleCheckbox}
+      />
       {/* Statistics showing total items and packed count */}
-      <Stats />
+      <Stats items={packingList} />
     </div>
   );
 }

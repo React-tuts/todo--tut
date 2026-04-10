@@ -1,5 +1,6 @@
 import React from "react";
 import { PackingListItemProps } from "./PackingList.types";
+import { Console } from "console";
 
 /**
  * PackingListItem component - Represents a single item in the packing list
@@ -11,9 +12,18 @@ export const PackingListItem = ({
   packingListItem,
   deleteItem,
   packingList,
+  handleCheckbox,
 }: PackingListItemProps) => {
   return (
     <li>
+      {/* check box for packed item */}
+      <input
+        type="checkbox"
+        checked={packingListItem.packed}
+        onChange={() => {
+          handleCheckbox(packingListItem);
+        }}
+      />
       {/* Apply strikethrough style if item is packed */}
       <span
         style={packingListItem.packed ? { textDecoration: "line-through" } : {}}
