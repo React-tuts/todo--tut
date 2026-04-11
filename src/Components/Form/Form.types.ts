@@ -1,8 +1,8 @@
 import React from "react"
-import { PackingListItem } from "../PackingList/PackingList.types"
+import { PackingListItemType } from "../PackingList/PackingList.types"
 
 export type FormProps = {
-    packingList:PackingListItem[],
+    packingList:PackingListItemType[],
     //setPackingList: React.Dispatch<React.SetStateAction<PackingListItem[]>>
-    addItem: (item:PackingListItem) => void
+    addItem: (item:PackingListItemType) => void
 }

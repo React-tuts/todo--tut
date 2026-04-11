@@ -1,5 +1,5 @@
-import { PackingListItem } from "../PackingList/PackingList.types"
+import { PackingListItemType } from "../PackingList/PackingList.types"
 
 export type StatsProps = {
-    items: PackingListItem[]
+    items: PackingListItemType[]
 }

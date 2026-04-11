@@ -1,6 +1,7 @@
-import React from "react";
-import { PackingListProps } from "./PackingList.types";
+import React, { useState } from "react";
+import { PackingListItemType, PackingListProps } from "./PackingList.types";
 import { PackingListItem } from "./PackingListItem";
+import { getSortedList, SortType } from "./utils/PackingSortUtil";
 
 /**
  * PackingList component - Displays all packing items in a list format
@@ -12,11 +13,14 @@ export const PackingList = ({
   deleteItem,
   handleCheckbox,
 }: PackingListProps) => {
+  const [sortBy, setSortBy] = useState<SortType>("input");
+  let sortedList: PackingListItemType[] = getSortedList(packingList, sortBy);
+
   return (
     <div className="list">
       <ul>
         {/* Map through all packing items and render each one */}
-        {packingList.map((pl) => (
+        {sortedList.map((pl) => (
           <PackingListItem
             packingListItem={pl}
             key={pl.id}
@@ -26,6 +30,19 @@ export const PackingList = ({
           />
         ))}
       </ul>
+      {/* sort by drop down */}
+      <div className="actions">
+        <select
+          value={sortBy}
+          onChange={(e) => {
+            setSortBy(e.target.value as SortType);
+          }}
+        >
+          <option value="input">Sort by Input</option>
+          <option value="description">Sort by Description</option>
+          <option value="packed">Sort by Packed</option>
+        </select>
+      </div>
     </div>
   );
 };

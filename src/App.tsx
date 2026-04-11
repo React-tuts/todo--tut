@@ -5,7 +5,7 @@ import { Form } from "./Components/Form/Form";
 import { PackingList } from "./Components/PackingList/PackingList";
 import { Stats } from "./Components/Stats/Stats";
 import { PackingListData } from "./Data/PackingListData";
-import { PackingListItem } from "./Components/PackingList/PackingList.types";
+import { PackingListItemType } from "./Components/PackingList/PackingList.types";
 
 /**
  * Main App component - Entry point for the travel packing list application
@@ -13,16 +13,16 @@ import { PackingListItem } from "./Components/PackingList/PackingList.types";
  */
 function App() {
   const [packingList, setPackingList] =
-    useState<PackingListItem[]>(PackingListData);
+    useState<PackingListItemType[]>(PackingListData);
 
-  const deleteItem = (item: PackingListItem) => {
+  const deleteItem = (item: PackingListItemType) => {
     setPackingList((items) => packingList.filter((p) => p.id !== item.id));
   };
-  const addItem = (item: PackingListItem) => {
+  const addItem = (item: PackingListItemType) => {
     setPackingList((items) => [...packingList, item]);
   };
 
-  const handleCheckbox = (item: PackingListItem) => {
+  const handleCheckbox = (item: PackingListItemType) => {
     setPackingList(
       packingList.map((p) =>
         p.id === item.id ? { ...p, packed: !p.packed } : p,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PackingListItem } from "../PackingList/PackingList.types";
+import { PackingListItemType } from "../PackingList/PackingList.types";
 import { FormProps } from "./Form.types";
 
 /**
@@ -20,7 +20,7 @@ export const Form = ({ packingList, addItem }: FormProps) => {
     if (!description.trim() || !quantity || Number(quantity) < 1) return;
     console.log(description);
     console.log(quantity);
-    const newItem: PackingListItem = {
+    const newItem: PackingListItemType = {
       id: Date.now(),
       description: description,
       quantity: Number(quantity),
