@@ -2,7 +2,8 @@ export type PackingListProps = {
     packingList: PackingListItemType[],
     //setPackingList: React.Dispatch<React.SetStateAction<PackingListItem[]>>
     deleteItem: (item: PackingListItemType) => void,
-    handleCheckbox: (item:PackingListItemType) => void
+    handleCheckbox: (item:PackingListItemType) => void,
+    removeItems: () => void
 }
 
 

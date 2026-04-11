@@ -21,6 +21,12 @@ function App() {
   const addItem = (item: PackingListItemType) => {
     setPackingList((items) => [...packingList, item]);
   };
+  const removeItems = () => {
+    const confirmation = window.confirm(
+      "Do you really want to clear the list?",
+    );
+    if (confirmation) setPackingList([]);
+  };
 
   const handleCheckbox = (item: PackingListItemType) => {
     setPackingList(
@@ -40,6 +46,7 @@ function App() {
         packingList={packingList}
         deleteItem={deleteItem}
         handleCheckbox={handleCheckbox}
+        removeItems={removeItems}
       />
       {/* Statistics showing total items and packed count */}
       <Stats items={packingList} />

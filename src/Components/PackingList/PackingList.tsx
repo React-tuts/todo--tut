@@ -12,6 +12,7 @@ export const PackingList = ({
   packingList,
   deleteItem,
   handleCheckbox,
+  removeItems,
 }: PackingListProps) => {
   const [sortBy, setSortBy] = useState<SortType>("input");
   let sortedList: PackingListItemType[] = getSortedList(packingList, sortBy);
@@ -42,6 +43,7 @@ export const PackingList = ({
           <option value="description">Sort by Description</option>
           <option value="packed">Sort by Packed</option>
         </select>
+        <button onClick={removeItems}>Clear List</button>
       </div>
     </div>
   );
